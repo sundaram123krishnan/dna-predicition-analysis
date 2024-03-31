@@ -22,7 +22,7 @@ function getKmers(sequence, size = 6) {
     const kmers = [];
     for (let i = 0; i < sequence.length - size + 1; i++) {
         kmers.push(sequence.slice(i, i + size).toLowerCase());
-    }
+    };
 
     // Return response
     res.status(200).json({ message: 'File uploaded and classified successfully' });
