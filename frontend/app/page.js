@@ -17,10 +17,8 @@ const Page = () => {
         <h1 className="text-3xl font-bold text-center mb-8">
           DNA Sequence Classifier
         </h1>
-        {/* Pass handleClassificationResult function as onSubmit prop */}
         <InputForm onSubmit={handleClassificationResult} />
       </div>
-      {/* {classificationResults && <ResultPage {...classificationResults} />} */}
     </div>
   );
 };
