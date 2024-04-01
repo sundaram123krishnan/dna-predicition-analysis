@@ -1,5 +1,5 @@
-// page.js
 "use client";
+
 import { useState } from "react";
 import InputForm from "./components/InputForm";
 
@@ -11,9 +11,36 @@ const Page = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center bg-gray-900">
-      <div className="border p-8 rounded-md">
-        <h1 className="text-3xl font-bold text-center mb-8">
+    <div
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#2d3748",
+        padding: "2rem",
+      }}
+    >
+      <div
+        style={{
+          maxWidth: "32rem",
+          width: "100%",
+          border: "2px solid #cbd5e0",
+          borderRadius: "0.5rem",
+          padding: "2rem",
+          backgroundColor: "#4a5568",
+          color: "#fff",
+        }}
+      >
+        <h1
+          style={{
+            fontSize: "2rem",
+            fontWeight: "bold",
+            textAlign: "center",
+            marginBottom: "2rem",
+          }}
+        >
           DNA Sequence Classifier
         </h1>
         <InputForm onSubmit={handleClassificationResult} />

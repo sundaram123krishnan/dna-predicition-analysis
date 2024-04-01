@@ -1,4 +1,3 @@
-// components/InputForm.js
 import React, { useState } from "react";
 import axios from "axios";
 
@@ -31,25 +30,43 @@ const InputForm = ({ onSubmit }) => {
   };
 
   return (
-    <div className="max-w-lg mx-auto">
+    <div style={{ maxWidth: "32rem", margin: "0 auto" }}>
       <form onSubmit={handleSubmit}>
         <input
           type="file"
           accept=".txt"
           onChange={handleFileChange}
-          className="w-full mt-4 p-2 border rounded-md bg-gray-800 text-white"
+          style={{
+            width: "100%",
+            marginTop: "1rem",
+            padding: "0.5rem",
+            border: "1px solid #CBD5E0",
+            borderRadius: "0.25rem",
+            backgroundColor: "#1F2937",
+            color: "#E5E7EB",
+          }}
         />
 
         <button
           type="submit"
-          className="block w-full mt-4 px-4 py-2 bg-gray-800 text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-600 border p-8 rounded-md"
+          style={{
+            display: "block",
+            width: "100%",
+            marginTop: "1rem",
+            padding: "0.5rem",
+            backgroundColor: "#4C51BF",
+            color: "#E5E7EB",
+            border: "none",
+            borderRadius: "0.25rem",
+            cursor: "pointer",
+          }}
         >
           Predict
         </button>
       </form>
 
       {classificationResult && (
-        <div className="mt-4 text-white">
+        <div style={{ marginTop: "1rem", color: "#E5E7EB" }}>
           <h3>Classification Result:</h3>
           <p>Predicted Class: {classificationResult.predicted_class}</p>
         </div>
