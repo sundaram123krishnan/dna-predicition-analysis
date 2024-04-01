@@ -1,8 +1,7 @@
 // page.js
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
 import InputForm from "./components/InputForm";
-import ResultPage from "./components/ResultPage";
 
 const Page = () => {
   const [classificationResults, setClassificationResults] = useState(null);
