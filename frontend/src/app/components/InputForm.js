@@ -18,9 +18,12 @@ const InputForm = ({ onSubmit }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/classify", {
-        sequence,
-      });
+      const response = await axios.post(
+        "http://localhost:5000/detect_mutations",
+        {
+          sequence,
+        }
+      );
       console.log(response);
       setClassificationResult(response.data);
       onSubmit(response.data);
