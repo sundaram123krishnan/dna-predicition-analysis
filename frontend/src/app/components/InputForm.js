@@ -50,22 +50,19 @@ const InputForm = ({ onSubmit }) => {
           }}
         />
 
+        <textarea
+          value={sequence}
+          onChange={(e) => setSequence(e.target.value)}
+          placeholder="Enter DNA sequence"
+          className="w-full h-40 p-2 border resize-none bg-gray-800 text-white"
+          style={{ resize: 'vertical' }}
+        />
         <button
           type="submit"
-          style={{
-            display: "block",
-            width: "100%",
-            marginTop: "1rem",
-            padding: "0.5rem",
-            backgroundColor: "#4C51BF",
-            color: "#E5E7EB",
-            border: "none",
-            borderRadius: "0.25rem",
-            cursor: "pointer",
-          }}
-        >
+          className="block w-full mt-4 px-4 py-2 bg-gray-800 text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-600 border p-8 rounded-md" >
           Predict
         </button>
+
       </form>
 
       {classificationResult && (
