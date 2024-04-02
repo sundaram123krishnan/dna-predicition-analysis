@@ -10,23 +10,15 @@ from sklearn.metrics import accuracy_score, confusion_matrix
 app = Flask(__name__)
 CORS(app)
 
-# Assuming you have a dataset with sequences and corresponding labels
-# Replace this with your actual dataset
-data = {
-    'sequence': ['sequence1', 'sequence2', 'sequence3'],
-    'mutation': [1, 0, 1]  # 1 for mutation, 0 for non-mutation
-}
-df = pd.DataFrame(data)
+# Load the dataset from a CSV file
+df = pd.read_csv('dna.csv')
 
 # Extract features and labels
-X = df['sequence']
-y = df['mutation']
+X = df['Sequence']
+y = df['Mutation']
 
 # Split data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
-def getKmers(sequence, size=6):
-    return [sequence[x:x+size].lower() for x in range(len(sequence) - size + 1)]
 
 def train_model(X_train, y_train):
     cv = CountVectorizer(ngram_range=(4, 4))
@@ -62,7 +54,17 @@ def detect_sequence_mutations():
 
         model, cv = train_model(X_train_updated, y_train_updated)
 
+        # Calculate accuracy and confusion matrix on the test set
+        X_test_transformed = cv.transform(X_test)
+        y_pred = model.predict(X_test_transformed)
+        accuracy = accuracy_score(y_test, y_pred)
+        conf_matrix = confusion_matrix(y_test, y_pred).tolist()
+
+        # Detect mutations for the provided sequence
         result = detect_mutations(sequence, model, cv)
+        result['accuracy'] = accuracy
+        result['confusion_matrix'] = conf_matrix
+
         return jsonify(result), 200
     else:
         return jsonify({'error': 'Sequence not provided.'}), 400
