@@ -24,8 +24,9 @@ const InputForm = ({ onSubmit }) => {
           sequence,
         }
       );
-      console.log(response);
+      console.log(response.data.mutation_detected);
       setClassificationResult(response.data);
+      // console.log(classificationResult.mutation_detected)
       onSubmit(response.data);
     } catch (error) {
       console.error("Error classifying sequence:", error);
@@ -70,8 +71,9 @@ const InputForm = ({ onSubmit }) => {
 
       {classificationResult && (
         <div style={{ marginTop: "1rem", color: "#E5E7EB" }}>
-          <h3>Classification Result:</h3>
-          <p>Predicted Class: {classificationResult.predicted_class}</p>
+          <h3>
+            Mutation Detected: {String(classificationResult.mutation_detected)}
+          </h3>
         </div>
       )}
     </div>
