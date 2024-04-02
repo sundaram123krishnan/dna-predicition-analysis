@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import Link from "next/link";
 
@@ -14,7 +16,7 @@ const Navbar = () => {
                   <Link href="/mutation_detected">Mutation Detection</Link>
                 </li>
                 <li>
-                  <Link href="/local_alignment">Local Alignment Searching</Link>
+                  <Link href="/gene_classes">Gene Classification</Link>
                 </li>
                 <li>
                 <Link href="/performance_analysis">Performance Analysis</Link>
